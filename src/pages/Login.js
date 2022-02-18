@@ -29,9 +29,9 @@ function Home() {
       bg={useColorModeValue('gray.50', 'gray.800')}>
       <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
         <Stack align={'center'}>
-          <Heading fontSize={'4xl'}>Iniciar sesión xD</Heading>
+          <Heading fontSize={'4xl'}>Inicia sesión en el Portal</Heading>
           <Text fontSize={'lg'} color={'gray.600'}>
-            to enjoy all of our cool <Link color={'blue.400'}>features</Link> ✌️
+            Para acceder a tus <Link color={'blue.400'}>Beneficios</Link> ✌️
           </Text>
         </Stack>
         <Box
@@ -41,11 +41,11 @@ function Home() {
           p={8}>
           <Stack spacing={4}>
             <FormControl id="email">
-              <FormLabel>Email address</FormLabel>
+              <FormLabel>RUT</FormLabel>
               <Input type="email" />
             </FormControl>
             <FormControl id="password">
-              <FormLabel>Password</FormLabel>
+              <FormLabel>Contraseña</FormLabel>
               <Input type="password" />
             </FormControl>
             <Stack spacing={10}>
@@ -53,17 +53,21 @@ function Home() {
                 direction={{ base: 'column', sm: 'row' }}
                 align={'start'}
                 justify={'space-between'}>
-                <Checkbox>Remember me</Checkbox>
-                <Link color={'blue.400'}>Forgot password?</Link>
+                <Checkbox>Recordarme</Checkbox>
+                <Link color={'blue.400'}>Olvidaste la clae?</Link>
               </Stack>
               <Button
-                bg={'blue.400'}
-                color={'white'}
-                _hover={{
-                  bg: 'blue.500',
-                }}>
-                Sign in
-              </Button>
+              fontFamily={'heading'}
+              mt={8}
+              w={'full'}
+              bgGradient="linear(to-r, green.400,green.300)"
+              color={'white'}
+              _hover={{
+                bgGradient: 'linear(to-r, green.300, green.400)',
+                boxShadow: 'xl',
+              }}>
+              Iniciar sesión
+            </Button>
             </Stack>
           </Stack>
         </Box>
