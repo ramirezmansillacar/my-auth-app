@@ -12,14 +12,21 @@ import {
     Heading,
     Text,
     useColorModeValue,
+    
   } from '@chakra-ui/react';
+import Home from './Home';
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
 import { CheckCircleIcon } from '@chakra-ui/icons';
 // import { getIndexColor } from '../Utils';
 
 /**
  * Componente `Home`
  */
-function Home() {
+function Login() {
   return(
     <Fragment>
       <Flex
@@ -56,18 +63,19 @@ function Home() {
                 <Checkbox>Recordarme</Checkbox>
                 <Link color={'blue.400'}>Olvidaste la clae?</Link>
               </Stack>
-              <Button
-              fontFamily={'heading'}
-              mt={8}
-              w={'full'}
-              bgGradient="linear(to-r, green.400,green.300)"
-              color={'white'}
-              _hover={{
-                bgGradient: 'linear(to-r, green.300, green.400)',
-                boxShadow: 'xl',
-              }}>
-              Iniciar sesión
-            </Button>
+              <Button onClick={'/home'}
+                fontFamily={'heading'}
+                mt={8}
+                w={'full'}
+                bgGradient="linear(to-r, green.400,green.300)"
+                color={'white'}
+                _hover={{
+                  bgGradient: 'linear(to-r, green.300, green.400)',
+                  boxShadow: 'xl',
+                }}>
+                Iniciar sesión
+              </Button>
+            
             </Stack>
           </Stack>
         </Box>
@@ -77,4 +85,4 @@ function Home() {
   )
 }
 
-export default Home;
+export default Login;
