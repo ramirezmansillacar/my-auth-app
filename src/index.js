@@ -3,21 +3,24 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Error from './pages/Error';
 import {
   BrowserRouter,
   Routes,
   Route
 } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider, Switch } from '@chakra-ui/react'
 
 ReactDOM.render(
   
   <BrowserRouter>
     <ChakraProvider>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" exact element={<Login />} />
+        <Route path="/login" exact element={<Login />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/*" element={<Error />} />
       </Routes>
   </ChakraProvider>
   </BrowserRouter>

@@ -7,7 +7,7 @@ import {
     Input,
     Checkbox,
     Stack,
-    Link,
+    Link as Linke,
     Button,
     Heading,
     Text,
@@ -15,30 +15,40 @@ import {
     
   } from '@chakra-ui/react';
 import Home from './Home';
+import Error from './Error';
 import {
   BrowserRouter,
   Routes,
-  Route
+  Route,
+  Link
 } from "react-router-dom";
 import { CheckCircleIcon } from '@chakra-ui/icons';
 // import { getIndexColor } from '../Utils';
 
+
+
 /**
  * Componente `Home`
  */
-function Login() {
+function Login(props) {
+  /**
+   * Método para el inicio de sesión
+   * 
+   * @param {event} e evento de invocación
+   */
+
   return(
     <Fragment>
       <Flex
-      minH={'100vh'}
-      align={'center'}
-      justify={'center'}
-      bg={useColorModeValue('gray.50', 'gray.800')}>
+        minH={'100vh'}
+        align={'center'}
+        justify={'center'}
+        bg={useColorModeValue('gray.50', 'gray.800')}>
       <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
         <Stack align={'center'}>
           <Heading fontSize={'4xl'}>Inicia sesión en el Portal</Heading>
           <Text fontSize={'lg'} color={'gray.600'}>
-            Para acceder a tus <Link color={'blue.400'}>Beneficios</Link> ✌️
+            Para acceder a tus <Linke color={'blue.400'}>Beneficios</Linke> ✌️
           </Text>
         </Stack>
         <Box
@@ -61,21 +71,10 @@ function Login() {
                 align={'start'}
                 justify={'space-between'}>
                 <Checkbox>Recordarme</Checkbox>
-                <Link color={'blue.400'}>Olvidaste la clae?</Link>
+                <Linke color={'blue.400'}>Olvidaste la clae?</Linke>
               </Stack>
-              <Button onClick={'/home'}
-                fontFamily={'heading'}
-                mt={8}
-                w={'full'}
-                bgGradient="linear(to-r, green.400,green.300)"
-                color={'white'}
-                _hover={{
-                  bgGradient: 'linear(to-r, green.300, green.400)',
-                  boxShadow: 'xl',
-                }}>
-                Iniciar sesión
-              </Button>
-            
+              <Link to="/home">Invoices</Link>
+              
             </Stack>
           </Stack>
         </Box>
@@ -85,4 +84,4 @@ function Login() {
   )
 }
 
-export default Login;
+export default (Login);
