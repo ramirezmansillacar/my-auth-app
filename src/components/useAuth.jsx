@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, setState } from "react";
+import { createContext, useState } from "react";
 
 const AuthContext = createContext()
 
@@ -7,8 +7,9 @@ export const useAuth = () => {
   
   const login = () => {
     // isAuthenticated = setState(true)
-    setIsAuthenticated(true)
+    setIsAuthenticated(isAuthenticated => !isAuthenticated)
     console.log('logged')
+    console.log(isAuthenticated)
   }
 
   const logout = () => {

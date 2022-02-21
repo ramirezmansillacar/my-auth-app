@@ -17,14 +17,14 @@ import { Link as RLink, useNavigate, Navigate } from 'react-router-dom';
 import { useAuth } from '../components/useAuth';
 
 export default function Login(props) {
-  // const { login } = useAuth()
-  // const navigate = useNavigate()
+  const { login } = useAuth()
+  const navigate = useNavigate()
 
-  // const handleClick = () => {
-  //   login()
-  //   navigate('/home')
-  //   // return <Navigate to="/home" />
-  // }
+  const handleClick = () => {
+    login()
+    navigate('/home')
+    // return <Navigate to="/home" />
+  }
 
   return(
     <Fragment>
@@ -62,7 +62,7 @@ export default function Login(props) {
                 <Checkbox>Recordarme</Checkbox>
                 <Link color={'blue.400'}>Olvidaste la clae?</Link>
               </Stack>
-              {/* <Link onClick={handleClick}>Invoices</Link> */}
+              <Link onClick={handleClick}>Invoices</Link>
               
             </Stack>
           </Stack>
