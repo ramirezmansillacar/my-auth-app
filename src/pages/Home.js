@@ -1,12 +1,11 @@
 import React, { Fragment } from 'react';
 import { Box, Heading, Text } from '@chakra-ui/react';
 import { CheckCircleIcon } from '@chakra-ui/icons';
-// import { getIndexColor } from '../Utils';
 
 /**
  * Componente `Home`
  */
-function Home() {
+export default function Home() {
   return(
     <Fragment>
       <Box textAlign="center" py={10} px={6}>
@@ -24,5 +23,3 @@ function Home() {
     </Fragment>
   )
 }
-
-export default Home;

@@ -7,35 +7,24 @@ import {
     Input,
     Checkbox,
     Stack,
-    Link as Linke,
-    Button,
+    Link,
     Heading,
     Text,
     useColorModeValue,
     
   } from '@chakra-ui/react';
-import Home from './Home';
-import Error from './Error';
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Link
-} from "react-router-dom";
-import { CheckCircleIcon } from '@chakra-ui/icons';
-// import { getIndexColor } from '../Utils';
+import { Link as RLink, useNavigate, Navigate } from 'react-router-dom';
+import { useAuth } from '../components/useAuth';
 
+export default function Login(props) {
+  // const { login } = useAuth()
+  // const navigate = useNavigate()
 
-
-/**
- * Componente `Home`
- */
-function Login(props) {
-  /**
-   * Método para el inicio de sesión
-   * 
-   * @param {event} e evento de invocación
-   */
+  // const handleClick = () => {
+  //   login()
+  //   navigate('/home')
+  //   // return <Navigate to="/home" />
+  // }
 
   return(
     <Fragment>
@@ -46,9 +35,9 @@ function Login(props) {
         bg={useColorModeValue('gray.50', 'gray.800')}>
       <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
         <Stack align={'center'}>
-          <Heading fontSize={'4xl'}>Inicia sesión en el Portal</Heading>
+          <Heading fontSize={'4xl'}>Inicia sesión en el Portal</Heading>  
           <Text fontSize={'lg'} color={'gray.600'}>
-            Para acceder a tus <Linke color={'blue.400'}>Beneficios</Linke> ✌️
+            Para acceder a tus <Link color={'blue.400'}>Beneficios</Link> ✌️
           </Text>
         </Stack>
         <Box
@@ -71,9 +60,9 @@ function Login(props) {
                 align={'start'}
                 justify={'space-between'}>
                 <Checkbox>Recordarme</Checkbox>
-                <Linke color={'blue.400'}>Olvidaste la clae?</Linke>
+                <Link color={'blue.400'}>Olvidaste la clae?</Link>
               </Stack>
-              <Link to="/home">Invoices</Link>
+              {/* <Link onClick={handleClick}>Invoices</Link> */}
               
             </Stack>
           </Stack>
@@ -83,5 +72,3 @@ function Login(props) {
     </Fragment>
   )
 }
-
-export default (Login);

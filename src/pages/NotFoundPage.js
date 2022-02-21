@@ -1,6 +1,6 @@
 import { Box, Heading, Text, Button } from '@chakra-ui/react';
 
-export default function Error() {
+export default function NotFoundPage() {
   return (
     <Box textAlign="center" py={10} px={6}>
       <Heading
@@ -11,9 +11,9 @@ export default function Error() {
         backgroundClip="text">
         404
       </Heading>
-      <Text fontSize="18px" mt={3} mb={2}>
+      <Heading as="h1" mt={3} mb={2}>
         Page Not Found
-      </Text>
+      </Heading>
       <Text color={'gray.500'} mb={6}>
         The page you're looking for does not seem to exist
       </Text>
