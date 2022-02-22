@@ -7,9 +7,18 @@ import NotFoundPage from './pages/NotFoundPage';
 import Login from './Login';
 import { Context } from './Auth';
 import { Routes, Route, Navigate } from "react-router-dom";
-
+import {useToast} from '@chakra-ui/react';
 const ProtectedRoute = ({ children }) => {
   const [LoginState] = useContext(Context)
+  
+  const toast = useToast()
+  toast({
+    title: 'Is logged?: ' + LoginState.toString(),
+    status: 'warning',
+    duration: 4000,
+    isClosable: true,
+  })
+
   if (!LoginState) {
     return <Navigate to="/login" location />
   }
@@ -23,11 +32,8 @@ const ProtectedRoute = ({ children }) => {
 }
 
 const App = () => {
-  const [LoginState] = useContext(Context)
   return (
       <div className="App">
-        
-        <h1>{LoginState.toString()}</h1>
         <Routes>
           <Route path="/" exact element={<ProtectedRoute><Home /></ProtectedRoute>} />
           <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
