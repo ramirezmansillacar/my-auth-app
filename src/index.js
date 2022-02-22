@@ -6,10 +6,14 @@ import { BrowserRouter } from "react-router-dom";
 import { ChakraProvider } from '@chakra-ui/react';
 import reportWebVitals from './reportWebVitals';
 
+import Auth from './Auth';
 ReactDOM.render(
   <BrowserRouter>
     <ChakraProvider>
-      <App />
+      <Auth>
+
+        <App />
+      </Auth>
     </ChakraProvider>
   </BrowserRouter>,
   document.getElementById('root')
