@@ -1,17 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Auth from './Auth';
 import App from './App';
 import { BrowserRouter } from "react-router-dom";
 import { ChakraProvider } from '@chakra-ui/react';
 import reportWebVitals from './reportWebVitals';
-
-import Auth from './Auth';
 ReactDOM.render(
   <BrowserRouter>
     <ChakraProvider>
       <Auth>
-
         <App />
       </Auth>
     </ChakraProvider>
