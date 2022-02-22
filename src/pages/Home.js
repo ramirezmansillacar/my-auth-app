@@ -1,24 +1,11 @@
 import React, { Fragment } from 'react';
-import { Box, Button, Heading, Text } from '@chakra-ui/react';
+import { Box, Heading, Text } from '@chakra-ui/react';
 import { CheckCircleIcon } from '@chakra-ui/icons';
 
 /**
  * Componente `Home`
  */
 export default function Home() {
-  
-  // const handleClick = async () => {
-  //   // login()
-  //   setState(true)
-  //   toast({
-  //     title: 'Sesión Iniciada',
-  //     status: 'success',
-  //     duration: 2000,
-  //     isClosable: true,
-  //   })
-  //   navigate('/home')
-  //   // return <Navigate to="/home" />
-  // }
   return(
     <Fragment>
       <Box textAlign="center" py={10} px={6}>
@@ -32,8 +19,6 @@ export default function Home() {
           voluptua.
         </Text>
       </Box>
-      
-    {/* <Button onClick={handleClick}>Desconectar</Button> */}
     </Fragment>
   )
 }

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import {
   IconButton,
   Avatar,
@@ -157,6 +157,13 @@ interface MobileProps extends FlexProps {
   onOpen: () => void;
 }
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
+     // Nombre Contact
+     const [name, setName] = useState(() => {
+      // Obteniendo desde variable local del navegador
+      const saved = localStorage.getItem("name");
+      const initialValue = (saved);
+      return initialValue || "";
+    });
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -209,9 +216,9 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                   alignItems="flex-start"
                   spacing="1px"
                   ml="2">
-                  <Text fontSize="sm">Justina Clark</Text>
+                  <Text fontSize="sm">{name}</Text>
                   <Text fontSize="xs" color="gray.600">
-                    Admin
+                    Colaborador
                   </Text>
                 </VStack>
                 <Box display={{ base: 'none', md: 'flex' }}>
@@ -222,11 +229,8 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
             <MenuList
               bg={useColorModeValue('white', 'gray.900')}
               borderColor={useColorModeValue('gray.200', 'gray.700')}>
-              <MenuItem>Profile</MenuItem>
-              <MenuItem>Settings</MenuItem>
-              <MenuItem>Billing</MenuItem>
+              <MenuItem>Cuenta</MenuItem>
               <MenuDivider />
-              <MenuItem>Sign out</MenuItem>
               <Logout></Logout>
             </MenuList>
           </Menu>

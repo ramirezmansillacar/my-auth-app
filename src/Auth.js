@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 
+export const Context = React.createContext()
 const LoginState = false
 
-export const Context = React.createContext()
-
 const Auth = ({ children }) => {
-  const [state, setState] = useState(LoginState)
+  // Obteniendo el estado desde la variable local del navegador
+  const [isLogged, setState] = useState(() => {
+    const localStoredStatus = localStorage.getItem("isLogged");
+    const initialValue = JSON.parse(localStoredStatus);
+    return initialValue || LoginState;
+  });
 
-  return (
-    <Context.Provider value={[state, setState]}>{ children }</Context.Provider>
+  return ( // Devuelve el contexto
+    <Context.Provider value={[isLogged, setState]}>{ children }</Context.Provider>
   )
 }
 
