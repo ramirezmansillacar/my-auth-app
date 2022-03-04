@@ -27,23 +27,39 @@ const Login = () => {
   const [state, setState] = useContext(Context)
 
   // Datos de request API
-  const baseUrl = 'https://vivetusbeneficios.custhelp.com/cc/API';
+  const baseUrl = 'http://vivetusbeneficios.custhelp.com/cc/API/';
+  // const baseUrl = 'http://vivetusbeneficios.custhelp.com/cc/';
 
-  let cookies = "location=development~YKVsn2SNfp90k_6feJlymUqZTJlAmUSZWJlamVqZXJmfBxMHEy0XNRkVNTs1Iy0zLTkZIZ8Hnwc!; cp_session=fUeq7oh91aPcLa1o05wkLGxOqOBgRx4SwqWEqb8c8vNpJnjSU6ObKMuZDWVRwaNy0Cx~M__weLdElKY7b4Vy9JavVGUdFkhWnyrgG0hhN2Pg~n4A5VPsvkbv~Cr0Ys017kaMjvkkfeAVCZgD6CzfeDbtyb41iXoeHqSGUQqvjW48RUfpiaPgjYbEzsJRxVGf_Y2vTOe5rEtyCYQ6fC5naGQsABDDzSHYBWkAbYuUqCben_ZLqj7Tp3Jm2_0zcZevKvyNLuwGbdzI7qXdr_L5aDVhNmH41CmzGJTI_SZq4lPOAKbGi4SATMXd65CpPN9G0WdNveUISdDdaCB3oSi7qqV8JCvvvElnma31PACP~y5WlFQ9Z1qKhJ8bdRubHmJuHR5_bkqFyq78uZwGbJhVIVPdL4Bn71hgQ0DuHjb~e_IRWCzV~oLr_4pg!!"
+  let cookies = "location=development%7EYKVsn2SNfp90k_6feJlymUSZQplOmUaZQplemVCZVJmfBxMHEy0XNRkVNTs1Iy0zLTkZIZ8Hnwc%21; Path=/; Expires=Wed, 21 Sep 2022 18:26:23 GMT;"
   ;
 
-  const apiInstance = axios.create({
-    baseURL: baseUrl,
-    withCredentials: false,
+  const axiosConfig = {
     headers: {
-      // 'Access-Control-Allow-Headers': cookies,
-      'Access-Control-Allow-Origin': true,
-      'Content-Type': 'application/json',
-      'Connection': 'keep-alive',
-    }
-  })
+      'content-Type': 'application/json',
+      "Accept": "/",
+      "Cache-Control": "no-cache",
+      "Access-Control-Allow-Origin": "*",
+      // "Cookie": cookies
+    },
+    credentials: "same-origin"
+  };
 
+  document.cookie = cookies;
 
+  axios.defaults.withCredentials = false;
+
+  // const apiInstance = axios.create({
+  //   baseURL: baseUrl,
+  //   withCredentials: false,
+  //   headers: {
+  //     // 'Access-Control-Allow-Headers': cookies,
+  //     'Access-Control-Allow-Origin': true,
+  //     'Content-Type': 'application/json',
+  //     'Connection': 'keep-alive',
+  //     Cookie: cookies,
+  //     'Sec-Fetch-Mode': 'cors'
+  //   }
+  // })
   const data = {
     login : "19933998-2",
     password : "VIVE19660"
@@ -55,22 +71,30 @@ const Login = () => {
    */
   const handleSubmit = async e => {
     e.preventDefault();
+
+    const serviceUrl = 'AuthenticationServices/login';
+    // const serviceUrl = 'Auth/login';
+
     // TODO: Enviar username and password a la API
     // const user = { rut, password };
 
     // Consumo de Servicio API REST
-    const response = apiInstance.post(
-      'AutorizationServices/login',
-      // 'Auth/doLogin',
-      data,
-    ).then((response) => {
-      console.log(response)
-    })
-    .catch((error) => {
-      console.error('Error', error)
-    })
-
-
+    // const response = apiInstance.post(
+    //   'AutorizationServices/login',
+    //   // 'Auth/doLogin',
+    //   data,
+    //   ).then((response) => {
+    //   console.log(response)
+    // })
+    // .catch((error) => {
+    //   console.error('Error', error)
+    // })
+    const response = axios.post(baseUrl+serviceUrl, data, axiosConfig)
+      .then((res) => {
+        console.log(res)
+      }).catch((err) => {
+        console.error(':(');
+      });
     // Almacenamiento en variable local de la autenticacion correcta, booleano
     if (response.data) { // TODO: validar con respuesta de Autenticacion
       localStorage.setItem('isLogged', true)
